@@ -1,7 +1,7 @@
 import React, {useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import AuthStack from '../stack/AuthStack';
+import Auth from '../stack/Auth';
 
 export default () => {
   const Stack = useMemo(() => createNativeStackNavigator(), []);
@@ -9,7 +9,7 @@ export default () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="AuthStack" component={AuthStack} />
+        <Stack.Screen name="AuthStack" component={Auth} />
       </Stack.Navigator>
     </NavigationContainer>
   );

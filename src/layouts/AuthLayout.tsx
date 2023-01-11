@@ -1,20 +1,20 @@
 import {View, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import DefaultHeader from '../components/header/DefaultHeader';
+import AuthHeader from '../components/header/AuthHeader';
 
-interface IDefaultLayout {
+interface IAuthLayout {
   title: string | undefined;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-export default ({title, children}: IDefaultLayout) => {
+export default ({title, children}: IAuthLayout) => {
   const {top} = useSafeAreaInsets();
 
   return (
     <View style={{flex: 1}}>
       <View style={[styles.container, {paddingTop: top}]}>
-        <DefaultHeader title={title} />
+        <AuthHeader title={title} />
         {children}
       </View>
     </View>
@@ -24,6 +24,7 @@ export default ({title, children}: IDefaultLayout) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
