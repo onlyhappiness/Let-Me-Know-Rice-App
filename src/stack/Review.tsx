@@ -1,11 +1,14 @@
 import {View, Text} from 'react-native';
-import React from 'react';
+import React, {useMemo} from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Review = () => {
+  const Stack = useMemo(() => createNativeStackNavigator(), []);
+
   return (
-    <View>
-      <Text>Review</Text>
-    </View>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Review" component={Review} />
+    </Stack.Navigator>
   );
 };
 
