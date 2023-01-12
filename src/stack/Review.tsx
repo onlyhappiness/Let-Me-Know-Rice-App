@@ -1,8 +1,8 @@
-import {View, Text} from 'react-native';
 import React, {useMemo} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Review from '../screens/Review/Review';
 
-const Review = () => {
+export default () => {
   const Stack = useMemo(() => createNativeStackNavigator(), []);
 
   return (
@@ -11,5 +11,3 @@ const Review = () => {
     </Stack.Navigator>
   );
 };
-
-export default Review;

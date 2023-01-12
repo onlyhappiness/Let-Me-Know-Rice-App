@@ -1,16 +1,27 @@
 import {View, StyleSheet, ScrollView, Text} from 'react-native';
 import React from 'react';
-import DefaultLayout from '../../layouts/DefaultLayout';
+import AuthLayout from '../../layouts/AuthLayout';
+import BottomButton from '../../components/BottomButton';
+import {useNavigation} from '@react-navigation/native';
 
 const Login = () => {
+  const navigation = useNavigation<any>();
+
   return (
-    <DefaultLayout title={'로그인'}>
+    <AuthLayout
+      title={'로그인'}
+      extraChildren={
+        <BottomButton
+          title="로그인"
+          onPress={() => navigation.navigate('TabStack')}
+        />
+      }>
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
         <View style={styles.container}>
           <Text>로그인</Text>
         </View>
       </ScrollView>
-    </DefaultLayout>
+    </AuthLayout>
   );
 };
 

@@ -6,9 +6,10 @@ import AuthHeader from '../components/header/AuthHeader';
 interface IAuthLayout {
   title: string | undefined;
   children: ReactNode;
+  extraChildren?: ReactNode;
 }
 
-export default ({title, children}: IAuthLayout) => {
+export default ({title, children, extraChildren}: IAuthLayout) => {
   const {top} = useSafeAreaInsets();
 
   return (
@@ -17,6 +18,7 @@ export default ({title, children}: IAuthLayout) => {
         <AuthHeader title={title} />
         {children}
       </View>
+      {extraChildren}
     </View>
   );
 };

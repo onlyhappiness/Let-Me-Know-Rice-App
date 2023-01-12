@@ -1,12 +1,13 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import React, {useMemo} from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Setting from '../screens/Setting/Setting';
 
-const Setting = () => {
+export default () => {
+  const Stack = useMemo(() => createNativeStackNavigator(), []);
+
   return (
-    <View>
-      <Text>Setting</Text>
-    </View>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Setting" component={Setting} />
+    </Stack.Navigator>
   );
 };
-
-export default Setting;

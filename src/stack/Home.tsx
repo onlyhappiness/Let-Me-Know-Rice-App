@@ -1,7 +1,8 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useMemo} from 'react';
+import Home from '../screens/Home/Home';
 
-const Home = () => {
+export default () => {
   const Stack = useMemo(() => createNativeStackNavigator(), []);
 
   return (
@@ -10,5 +11,3 @@ const Home = () => {
     </Stack.Navigator>
   );
 };
-
-export default Home;

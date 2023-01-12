@@ -1,14 +1,15 @@
 import {View, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import DefaultHeader from '../components/header/DefaultHeader';
 
 interface IDefaultLayout {
   title: string | undefined;
-  children: React.ReactNode;
+  children: ReactNode;
+  extraChildren?: ReactNode;
 }
 
-export default ({title, children}: IDefaultLayout) => {
+export default ({title, children, extraChildren}: IDefaultLayout) => {
   const {top} = useSafeAreaInsets();
 
   return (
@@ -17,6 +18,7 @@ export default ({title, children}: IDefaultLayout) => {
         <DefaultHeader title={title} />
         {children}
       </View>
+      {extraChildren}
     </View>
   );
 };
