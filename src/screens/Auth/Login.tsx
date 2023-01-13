@@ -2,19 +2,21 @@ import {View, StyleSheet, ScrollView, Text} from 'react-native';
 import React from 'react';
 import AuthLayout from '../../layouts/AuthLayout';
 import BottomButton from '../../components/BottomButton';
-import {useNavigation} from '@react-navigation/native';
+import {useRecoilState} from 'recoil';
+import {AuthState} from '../../recoil/AuthState';
 
 const Login = () => {
-  const navigation = useNavigation<any>();
+  const [userInfo, setUserInfo] = useRecoilState(AuthState);
+
+  const onHandleLogin = () => {
+    setUserInfo(true);
+  };
 
   return (
     <AuthLayout
       title={'로그인'}
       extraChildren={
-        <BottomButton
-          title="로그인"
-          onPress={() => navigation.navigate('TabStack')}
-        />
+        <BottomButton title="로그인" onPress={() => onHandleLogin()} />
       }>
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
         <View style={styles.container}>

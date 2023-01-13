@@ -1,12 +1,21 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
+import HomeLayout from '../../layouts/HomeLayout';
 
-const Favorite = () => {
+export default () => {
   return (
-    <View>
-      <Text>Favorite</Text>
-    </View>
+    <HomeLayout title="찜">
+      <View style={styles.container}>
+        <Text>Favorite</Text>
+      </View>
+    </HomeLayout>
   );
 };
 
-export default Favorite;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

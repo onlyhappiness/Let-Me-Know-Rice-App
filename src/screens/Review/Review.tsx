@@ -1,12 +1,21 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
+import HomeLayout from '../../layouts/HomeLayout';
 
-const Review = () => {
+export default () => {
   return (
-    <View>
-      <Text>Review</Text>
-    </View>
+    <HomeLayout title="리뷰">
+      <View style={styles.container}>
+        <Text>Review</Text>
+      </View>
+    </HomeLayout>
   );
 };
 
-export default Review;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
