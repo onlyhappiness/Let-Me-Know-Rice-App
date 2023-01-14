@@ -10,10 +10,12 @@ export default () => {
   const Tab = useMemo(() => createBottomTabNavigator(), []);
 
   return (
-    <Tab.Navigator screenOptions={{headerShown: false}}>
-      <Tab.Screen name="HomeStack" component={Home} />
+    <Tab.Navigator
+      initialRouteName="HomeStack"
+      screenOptions={{headerShown: false}}>
       <Tab.Screen name="FavoriteStack" component={Favorite} />
       <Tab.Screen name="ReviewStack" component={Review} />
+      <Tab.Screen name="HomeStack" component={Home} />
       <Tab.Screen name="CommunityStack" component={Community} />
       <Tab.Screen name="SettingStack" component={Setting} />
     </Tab.Navigator>

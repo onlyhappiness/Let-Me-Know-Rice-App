@@ -1,6 +1,8 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
+import FeatherIcon from 'react-native-vector-icons/Feather';
+
 interface Prop {
   title: string | undefined;
 }
@@ -16,8 +18,10 @@ export default ({title}: Prop) => {
 
       <View style={styles.right}>
         <View style={styles.iconContainer}>
-          <Text>검색아이콘</Text>
-          <Text>종 아이콘</Text>
+          {/* <Text>검색아이콘</Text> */}
+          <FeatherIcon name="search" size={22} />
+          {/* <Text>종 아이콘</Text> */}
+          <FeatherIcon name="send" size={22} />
         </View>
       </View>
     </View>
@@ -43,11 +47,12 @@ const styles = StyleSheet.create({
   right: {
     flex: 1,
     alignItems: 'flex-end',
+    // backgroundColor: 'gray',
   },
   iconContainer: {
-    width: '100%',
+    width: '80%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
 });
