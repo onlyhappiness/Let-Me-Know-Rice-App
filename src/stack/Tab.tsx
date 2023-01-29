@@ -1,20 +1,31 @@
-import React, {useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import IonIcon from 'react-native-vector-icons/Ionicons';
+
+import notifee from '@notifee/react-native';
+
 import Home from './Home';
 import Favorite from './Favorite';
 import Review from './Review';
 import Setting from './Setting';
 import Community from './Community';
 
-import IonIcon from 'react-native-vector-icons/Ionicons';
-
 export default () => {
   const Tab = useMemo(() => createBottomTabNavigator(), []);
+
+  // TODO: notifee ios용 권한
+  useEffect(() => {
+    (async () => {
+      await notifee.requestPermission();
+    })();
+  }, []);
 
   return (
     <Tab.Navigator
       initialRouteName="HomeStack"
       screenOptions={({route}) => ({
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         tabBarIcon: ({focused, color}) => {
           let iconName = '';
 
