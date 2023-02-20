@@ -1,16 +1,16 @@
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
-import HomeLayout from '../../layouts/HomeLayout';
+import DefaultLayout from '../../layouts/DefaultLayout';
 
 export default () => {
   return (
-    <HomeLayout title="주소">
+    <DefaultLayout title="회원가입">
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
         <View style={styles.container}>
-          <Text>Home</Text>
+          <Text>회원가입 페이지</Text>
         </View>
       </ScrollView>
-    </HomeLayout>
+    </DefaultLayout>
   );
 };
 

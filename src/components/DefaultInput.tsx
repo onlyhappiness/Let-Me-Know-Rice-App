@@ -1,5 +1,6 @@
 import {View, StyleSheet, ViewStyle, TextInput} from 'react-native';
 import React from 'react';
+import {COLOR} from '../theme/color';
 
 interface IProps {
   containerStyle?: ViewStyle;
@@ -8,7 +9,11 @@ interface IProps {
 export default (props: any, {containerStyle}: IProps) => {
   return (
     <View style={[styles.container, containerStyle]}>
-      <TextInput style={styles.input} {...props} placeholderTextColor="black" />
+      <TextInput
+        style={styles.input}
+        {...props}
+        placeholderTextColor={COLOR.input}
+      />
     </View>
   );
 };
@@ -16,7 +21,7 @@ export default (props: any, {containerStyle}: IProps) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    backgroundColor: 'gray',
+    backgroundColor: COLOR.inputBackground,
     borderRadius: 10,
     marginBottom: 20,
   },

@@ -1,15 +1,21 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 
+// icon
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
+
 interface IDefaultHeader {
   title: string | undefined;
 }
 
 export default ({title}: IDefaultHeader) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.header}>
-      <TouchableOpacity style={styles.left}>
-        <Text>뒤로</Text>
+      <TouchableOpacity style={styles.left} onPress={() => navigation.goBack()}>
+        <FeatherIcon name="arrow-left" size={22} />
       </TouchableOpacity>
       <View style={styles.center}>
         <Text>{title}</Text>

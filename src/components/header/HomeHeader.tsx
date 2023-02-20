@@ -11,7 +11,7 @@ export default ({title}: Prop) => {
   return (
     <View style={styles.header}>
       <View style={styles.left}>
-        <Text>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
 
       <View style={styles.center} />
@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
   },
   left: {
     flex: 1,
+  },
+  title: {
+    fontSize: 16,
   },
   center: {
     flex: 1,

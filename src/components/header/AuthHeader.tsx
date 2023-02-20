@@ -10,7 +10,7 @@ export default ({title}: IProp) => {
     <View style={styles.header}>
       <View style={styles.left} />
       <View style={styles.center}>
-        <Text>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.right} />
     </View>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: '600',
-    // color:
+    color: '#ffffff',
   },
   right: {
     flex: 1,
