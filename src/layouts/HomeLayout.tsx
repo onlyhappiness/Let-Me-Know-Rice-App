@@ -13,7 +13,7 @@ export default ({title, children, extraChildren}: IHomeLayout) => {
   const {top} = useSafeAreaInsets();
 
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.layout}>
       <View style={[styles.container, {paddingTop: top}]}>
         <HomeHeader title={title} />
         {children}
@@ -24,8 +24,12 @@ export default ({title, children, extraChildren}: IHomeLayout) => {
 };
 
 const styles = StyleSheet.create({
+  layout: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
   },
 });
