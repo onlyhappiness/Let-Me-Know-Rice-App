@@ -6,14 +6,24 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 interface Prop {
   title: string;
   onPress: () => void;
+  active?: any;
 }
 
-export default ({title, onPress}: Prop) => {
+export default ({title, onPress, active}: Prop) => {
   const {bottom} = useSafeAreaInsets();
 
   return (
     <View style={[styles.button, {marginBottom: bottom}]}>
-      <TouchableOpacity style={styles.container} onPress={onPress}>
+      <TouchableOpacity
+        style={[
+          styles.container,
+          active
+            ? {backgroundColor: COLOR.main}
+            : {
+                backgroundColor: COLOR.input,
+              },
+        ]}
+        onPress={active ? onPress : () => null}>
         <Text style={styles.title}>{title}</Text>
       </TouchableOpacity>
     </View>
@@ -31,7 +41,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     marginVertical: 10,
     // margin: 10,
-    backgroundColor: COLOR.main,
   },
   title: {
     color: 'white',

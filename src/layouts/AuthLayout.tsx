@@ -2,7 +2,6 @@ import {View, StyleSheet} from 'react-native';
 import React, {ReactNode} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import AuthHeader from '../components/header/AuthHeader';
-import {COLOR} from '../theme/color';
 
 interface IAuthLayout {
   title?: string | undefined;

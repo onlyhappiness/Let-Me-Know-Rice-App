@@ -1,9 +1,11 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
 import OverviewCard from '../../components/OverviewCard';
 
 export default () => {
+  const [data, setData] = useState([]);
+
   return (
     <HomeLayout title="주소">
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
@@ -17,6 +19,9 @@ export default () => {
             <OverviewCard />
             <OverviewCard />
             <OverviewCard />
+            {/* {data?.map((v, i) => {
+              return <OverviewCard key={i} />;
+            })} */}
           </View>
         </View>
       </ScrollView>

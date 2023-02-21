@@ -4,6 +4,7 @@ import HomeLayout from '../../layouts/HomeLayout';
 import BottomButton from '../../components/BottomButton';
 import {useRecoilState} from 'recoil';
 import {AuthState} from '../../recoil/AuthState';
+import Button from '../../components/Button';
 
 export default () => {
   const [userInfo, setUserInfo] = useRecoilState(AuthState);
@@ -17,12 +18,7 @@ export default () => {
       title="내 밥줘"
       extraChildren={
         <View style={{backgroundColor: '#ffffff'}}>
-          <BottomButton
-            title="로그아웃"
-            onPress={() => {
-              onLogout();
-            }}
-          />
+          <Button title="로그아웃" onPress={onLogout} />
         </View>
       }>
       <View style={styles.container}>

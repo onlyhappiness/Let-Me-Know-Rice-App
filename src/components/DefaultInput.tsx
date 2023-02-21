@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   input: {
     paddingHorizontal: 15,
     paddingVertical: 10,
-    fontSize: 15,
+    fontSize: 14,
+    letterSpacing: -0.28,
   },
 });

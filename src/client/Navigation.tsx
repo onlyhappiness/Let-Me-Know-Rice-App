@@ -1,15 +1,11 @@
-import React, {useEffect, useMemo, useRef} from 'react';
+import React, {useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-
-// import moment from 'moment';
-// import SimpleToast from 'react-native-simple-toast';
 
 import Auth from '../stack/Auth';
 import Tab from '../stack/Tab';
 import {useRecoilValue} from 'recoil';
 import {AuthState} from '../recoil/AuthState';
-// import {BackHandler} from 'react-native';
 import quitApp from '../util/quitApp';
 
 export default () => {

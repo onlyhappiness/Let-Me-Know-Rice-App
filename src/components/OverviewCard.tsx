@@ -10,7 +10,9 @@ import React from 'react';
 
 const {width} = Dimensions.get('screen');
 
-export default () => {
+export default ({key}: any) => {
+  console.log('key: ', key);
+
   return (
     <View style={styles.container}>
       <TouchableOpacity>

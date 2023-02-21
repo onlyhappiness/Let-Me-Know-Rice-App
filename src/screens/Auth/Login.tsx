@@ -28,9 +28,7 @@ const Login = () => {
   };
 
   return (
-    <AuthLayout
-    // title={'로그인'}
-    >
+    <AuthLayout>
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
         <View style={styles.container}>
           {/* <Text style={styles.logo}>밥줘</Text> */}
@@ -56,7 +54,7 @@ const Login = () => {
           <View style={styles.authContainer}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('Register');
+                navigation.navigate('RegisterStepOne');
               }}>
               <Text>회원가입</Text>
             </TouchableOpacity>
