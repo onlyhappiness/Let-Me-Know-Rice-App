@@ -14,6 +14,9 @@ import {COLOR} from '../../theme/color';
 import Button from '../../components/Button';
 import {useNavigation} from '@react-navigation/native';
 
+// logo
+import Logo from '../../assets/logo.svg';
+
 const Login = () => {
   const navigation = useNavigation<any>();
 
@@ -32,7 +35,10 @@ const Login = () => {
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
         <View style={styles.container}>
           {/* <Text style={styles.logo}>밥줘</Text> */}
-          <Text style={styles.content}>반갑습니다! 밥 줘 입니다.</Text>
+          <View style={styles.logoContainer}>
+            <Logo width={140} height={100} style={styles.logo} />
+            <Text style={styles.content}>밥 줘!</Text>
+          </View>
           <DefaultInput
             placeholder={'아이디를 입력하세요.'}
             value={userId}
@@ -71,14 +77,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 10,
   },
-  logo: {
-    color: COLOR.main,
-    fontSize: 18,
-    letterSpacing: 5,
-    marginBottom: 60,
-    fontWeight: '800',
+  logoContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  logo: {},
   content: {
+    paddingLeft: 0,
     color: '#9096a7',
     fontSize: 16,
     marginBottom: 60,

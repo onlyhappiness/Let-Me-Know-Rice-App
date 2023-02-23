@@ -30,7 +30,8 @@ export default ({title}: Prop) => {
 
 const styles = StyleSheet.create({
   header: {
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 14,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',

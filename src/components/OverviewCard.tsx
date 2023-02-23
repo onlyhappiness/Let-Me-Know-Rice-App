@@ -11,10 +11,8 @@ import React from 'react';
 const {width} = Dimensions.get('screen');
 
 export default ({key}: any) => {
-  console.log('key: ', key);
-
   return (
-    <View style={styles.container}>
+    <View key={key} style={styles.container}>
       <TouchableOpacity>
         <View style={styles.card}>
           <Image
