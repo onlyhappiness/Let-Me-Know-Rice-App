@@ -4,8 +4,6 @@ import HomeLayout from '../../layouts/HomeLayout';
 import OverviewCard from '../../components/OverviewCard';
 
 export default () => {
-  const [data, setData] = useState([]);
-
   return (
     <HomeLayout title="주소">
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
@@ -15,13 +13,14 @@ export default () => {
           </View>
 
           <View style={styles.list}>
+            <View style={styles.pick}>
+              <Text style={styles.pickText}>픽 맛집</Text>
+              <Text>전체보기</Text>
+            </View>
             <OverviewCard />
             <OverviewCard />
             <OverviewCard />
             <OverviewCard />
-            {/* {data?.map((v, i) => {
-              return <OverviewCard key={i} />;
-            })} */}
           </View>
         </View>
       </ScrollView>
@@ -39,7 +38,23 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     padding: 30,
-    marginBottom: 40,
+    marginBottom: 30,
   },
-  list: {},
+  list: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  pick: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 14,
+    paddingBottom: 14,
+  },
+  pickText: {
+    fontSize: 16,
+    fontWeight: '800',
+    paddingVertical: 10,
+  },
 });

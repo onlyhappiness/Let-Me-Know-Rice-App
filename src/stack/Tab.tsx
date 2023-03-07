@@ -30,20 +30,35 @@ export default () => {
           let iconName = '';
 
           if (route.name === 'FavoriteStack') {
-            iconName = 'heart-outline';
+            // iconName = 'heart-outline';
+            iconName = 'heart';
           } else if (route.name === 'ReviewStack') {
-            iconName = 'chatbubble-ellipses-outline';
+            // iconName = 'chatbubble-ellipses-outline';
+            iconName = 'chatbubble-ellipses';
           } else if (route.name === 'HomeStack') {
-            iconName = 'home-outline';
+            // iconName = 'home-outline';
+            iconName = 'home';
           } else if (route.name === 'CommunityStack') {
-            iconName = 'chatbubbles-outline';
+            // iconName = 'chatbubbles-outline';
+            iconName = 'chatbubbles';
           } else if (route.name === 'SettingStack') {
-            iconName = 'happy-outline';
+            // iconName = 'happy-outline';
+            iconName = 'happy';
           }
 
-          return <IonIcon name={iconName} size={22} />;
+          return (
+            <IonIcon
+              name={iconName}
+              size={24}
+              color={focused ? '#55C1D9' : '#B1BDC5'}
+              // color={focused ? '#F2CB05' : 'gray'}
+            />
+          );
         },
         headerShown: false,
+        tabBarActiveTintColor: '#55C1D9',
+        // tabBarActiveTintColor: '#F2CB05',
+        tabBarInactiveTintColor: '#B1BDC5',
       })}>
       <Tab.Screen
         name="FavoriteStack"
