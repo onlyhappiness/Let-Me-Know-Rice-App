@@ -10,6 +10,7 @@ import Favorite from './Favorite';
 import Review from './Review';
 import Setting from './Setting';
 import Community from './Community';
+import {COLOR} from '../theme/color';
 
 export default () => {
   const Tab = useMemo(() => createBottomTabNavigator(), []);
@@ -50,14 +51,14 @@ export default () => {
             <IonIcon
               name={iconName}
               size={24}
-              color={focused ? '#55C1D9' : '#B1BDC5'}
-              // color={focused ? '#F2CB05' : 'gray'}
+              color={focused ? COLOR.main : '#B1BDC5'}
+              // color={focused ? '#55C1D9' : '#B1BDC5'}
             />
           );
         },
         headerShown: false,
-        tabBarActiveTintColor: '#55C1D9',
-        // tabBarActiveTintColor: '#F2CB05',
+        tabBarActiveTintColor: COLOR.main,
+        // tabBarActiveTintColor: '#55C1D9',
         tabBarInactiveTintColor: '#B1BDC5',
       })}>
       <Tab.Screen

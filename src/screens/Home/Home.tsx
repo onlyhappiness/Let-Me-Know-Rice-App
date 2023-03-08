@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
 import OverviewCard from '../../components/OverviewCard';
 
@@ -12,6 +12,7 @@ export default () => {
             <Text>배너</Text>
           </View>
 
+          {/* FIXME: flatlist로 수정 */}
           <View style={styles.list}>
             <View style={styles.pick}>
               <Text style={styles.pickText}>픽 맛집</Text>
