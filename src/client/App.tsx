@@ -1,6 +1,7 @@
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import React from 'react';
-import {RecoilRoot} from 'recoil';
+import {Provider} from 'react-redux';
+import store from '../redux/store';
 import Navigation from './Navigation';
 
 const queryClient = new QueryClient();
@@ -8,9 +9,9 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <RecoilRoot>
+      <Provider store={store}>
         <Navigation />
-      </RecoilRoot>
+      </Provider>
     </QueryClientProvider>
   );
 };

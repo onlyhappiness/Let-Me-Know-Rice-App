@@ -5,7 +5,7 @@ import moment from 'moment';
 import SimpleToast from 'react-native-simple-toast';
 
 export default () => {
-  const ref = useRef();
+  const ref = useRef<any>();
 
   const exit_time = useRef(0);
 

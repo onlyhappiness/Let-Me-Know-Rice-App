@@ -7,14 +7,11 @@ import {
 } from 'react-native';
 import React from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
-import {useRecoilState} from 'recoil';
-import {AuthState} from '../../recoil/AuthState';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default () => {
-  const [userInfo, setUserInfo] = useRecoilState(AuthState);
-
   const onLogout = () => {
-    setUserInfo(undefined);
+    AsyncStorage.clear();
   };
 
   const options = [
@@ -36,7 +33,7 @@ export default () => {
             <Text>bread님</Text>
           </View>
 
-          {options.map((v, i) => {
+          {options.map(v => {
             return (
               <TouchableOpacity
                 key={v.name}

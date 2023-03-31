@@ -52,13 +52,11 @@ export default () => {
               name={iconName}
               size={24}
               color={focused ? COLOR.main : '#B1BDC5'}
-              // color={focused ? '#55C1D9' : '#B1BDC5'}
             />
           );
         },
         headerShown: false,
         tabBarActiveTintColor: COLOR.main,
-        // tabBarActiveTintColor: '#55C1D9',
         tabBarInactiveTintColor: '#B1BDC5',
       })}>
       <Tab.Screen

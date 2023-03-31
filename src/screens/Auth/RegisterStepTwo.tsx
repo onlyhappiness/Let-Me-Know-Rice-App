@@ -1,16 +1,12 @@
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import DefaultLayout from '../../layouts/DefaultLayout';
 import BottomButton from '../../components/BottomButton';
-import {useNavigation} from '@react-navigation/native';
-import {useRecoilState} from 'recoil';
-import {AuthState} from '../../recoil/AuthState';
+// import {useNavigation} from '@react-navigation/native';
 import InputLabel from '../../components/InputLabel';
 
 export default () => {
-  const navigation = useNavigation<any>();
-
-  const [userInfo, setUserInfo] = useRecoilState(AuthState);
+  // const navigation = useNavigation<any>();
 
   // 휴대폰 번호
   const [phone, setPhone] = useState('');
@@ -19,7 +15,7 @@ export default () => {
   const [code, setCode] = useState('');
 
   const handlePressNext = () => {
-    setUserInfo(true);
+    // setUserInfo(true);
   };
 
   return (

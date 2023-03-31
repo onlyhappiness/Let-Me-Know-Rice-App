@@ -7,27 +7,31 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import AuthLayout from '../../layouts/AuthLayout';
-import {useRecoilState} from 'recoil';
-import {AuthState} from '../../recoil/AuthState';
 import DefaultInput from '../../components/DefaultInput';
-import {COLOR} from '../../theme/color';
 import Button from '../../components/Button';
 import {useNavigation} from '@react-navigation/native';
 
 // logo
 import Logo from '../../assets/logo.svg';
+import {useLoginMutation} from '../../hooks/auth.query';
 
 const Login = () => {
   const navigation = useNavigation<any>();
 
-  const [userInfo, setUserInfo] = useRecoilState(AuthState);
-
   // 로그인
-  const [userId, setUserId] = useState('');
+  const [signname, setSignname] = useState('');
   const [password, setPassword] = useState('');
 
+  const loginMutation = useLoginMutation();
+
   const onHandleLogin = () => {
-    setUserInfo(true);
+    // setUserInfo(true);
+    const body = {
+      signname,
+      password,
+    };
+
+    loginMutation.mutate(body);
   };
 
   return (
@@ -41,8 +45,8 @@ const Login = () => {
           </View>
           <DefaultInput
             placeholder={'아이디를 입력하세요.'}
-            value={userId}
-            onChangeText={(t: string) => setUserId(t.trim())}
+            value={signname}
+            onChangeText={(t: string) => setSignname(t.trim())}
           />
 
           <DefaultInput
