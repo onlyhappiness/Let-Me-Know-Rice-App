@@ -23,8 +23,6 @@ export const useLoginMutation = () => {
 
   return useMutation(login, {
     onSuccess(res) {
-      console.log('로그인 성공', res?.access_token);
-
       const token = res?.access_token;
       AsyncStorage.setItem('token', token);
       setToken(token);

@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import api from '../api';
 import {loginInfo} from '../api/apis/auth';
 
+// api 요청시 header 토큰 추가
 export const setToken = (token: any) => {
   if (!token) {
     delete api.defaults.headers.common.Authorization;
@@ -9,6 +10,7 @@ export const setToken = (token: any) => {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
+// 로그인 성공 시 로그인 정보 요청
 export const me = createAsyncThunk('auth/login', () => {
   return loginInfo();
 });

@@ -12,9 +12,7 @@ export default api;
 
 // api.interceptors.request.use(async (request: any) => {
 //   const token = await AsyncStorage.getItem('token');
-
 //   // console.log('토큰 들어갔어요???', token);
-
 //   if (!token) {
 //     delete api.defaults.headers.common.Authorization;
 //   }
