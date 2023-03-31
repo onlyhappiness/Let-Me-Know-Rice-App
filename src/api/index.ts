@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 export const getApiHost = () => {
@@ -11,18 +10,18 @@ const api = axios.create({
 
 export default api;
 
-api.interceptors.request.use(async (request: any) => {
-  const token = await AsyncStorage.getItem('token');
+// api.interceptors.request.use(async (request: any) => {
+//   const token = await AsyncStorage.getItem('token');
 
-  console.log('토큰 들어갔어요???', token);
+//   // console.log('토큰 들어갔어요???', token);
 
-  if (!token) {
-    delete api.defaults.headers.common.Authorization;
-  }
-  if (!request.headers.Authorization) {
-    request.headers = {
-      Authorization: `Bearer ${token}`,
-    };
-  }
-  return request;
-});
+//   if (!token) {
+//     delete api.defaults.headers.common.Authorization;
+//   }
+//   if (!request.headers.Authorization) {
+//     request.headers = {
+//       Authorization: `Bearer ${token}`,
+//     };
+//   }
+//   return request;
+// });

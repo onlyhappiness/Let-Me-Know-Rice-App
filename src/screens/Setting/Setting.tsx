@@ -8,10 +8,15 @@ import {
 import React from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {clearPrincipal} from '../../redux/auth';
+import {useDispatch} from 'react-redux';
 
 export default () => {
-  const onLogout = () => {
+  const dispatch = useDispatch();
+
+  const onLogout = async () => {
     AsyncStorage.clear();
+    dispatch(clearPrincipal());
   };
 
   const options = [

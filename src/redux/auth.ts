@@ -1,5 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import api from '../api';
+import {loginInfo} from '../api/apis/auth';
 
 export const setToken = (token: any) => {
   if (!token) {
@@ -8,7 +9,9 @@ export const setToken = (token: any) => {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// export const me = createAsyncThunk('auth/login', async () => {
+export const me = createAsyncThunk('auth/login', () => {
+  return loginInfo();
+});
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -21,6 +24,15 @@ export const authSlice = createSlice({
     },
     clearPrincipal: state => {
       state.principal = undefined;
+    },
+  },
+  extraReducers: {
+    [me.fulfilled.type]: (state, action) => {
+      if (action.payload === 400) {
+        state.principal = undefined;
+      } else {
+        state.principal = action.payload;
+      }
     },
   },
 });

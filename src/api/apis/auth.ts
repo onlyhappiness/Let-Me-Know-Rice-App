@@ -19,7 +19,5 @@ export const login = async (req: ILogin) => {
 export const loginInfo = async () => {
   const res = await api.get(`/auth/login`);
 
-  console.log('로그인 정보 조회: ', res);
-
-  return res;
+  return res?.data?.data;
 };

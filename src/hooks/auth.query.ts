@@ -3,7 +3,7 @@ import {useMutation, useQuery} from '@tanstack/react-query';
 import {AxiosError} from 'axios';
 import {useDispatch} from 'react-redux';
 import {login, loginInfo, register} from '../api/apis/auth';
-import {setToken} from '../redux/auth';
+import {me, setToken} from '../redux/auth';
 
 // 회원가입
 export const useRegisterMutation = () => {
@@ -19,6 +19,8 @@ export const useRegisterMutation = () => {
 
 // 로그인
 export const useLoginMutation = () => {
+  const dispatch = useDispatch<any>();
+
   return useMutation(login, {
     onSuccess(res) {
       console.log('로그인 성공', res?.access_token);
@@ -26,6 +28,7 @@ export const useLoginMutation = () => {
       const token = res?.access_token;
       AsyncStorage.setItem('token', token);
       setToken(token);
+      dispatch(me());
     },
     onError(err) {
       const {data}: any = (err as AxiosError).response;
