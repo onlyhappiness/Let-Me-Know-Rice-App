@@ -2,8 +2,11 @@ import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
 import OverviewCard from '../../components/OverviewCard';
+import {useGetStore} from '../../hooks/store.query';
 
 export default () => {
+  const {data} = useGetStore();
+
   return (
     <HomeLayout title="주소">
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
@@ -18,10 +21,14 @@ export default () => {
               <Text style={styles.pickText}>픽 맛집</Text>
               <Text>전체보기</Text>
             </View>
-            <OverviewCard />
-            <OverviewCard />
-            <OverviewCard />
-            <OverviewCard />
+
+            {data?.map((item: any) => {
+              return (
+                <View style={styles.overview} key={item?.id}>
+                  <OverviewCard item={item} />
+                </View>
+              );
+            })}
           </View>
         </View>
       </ScrollView>
@@ -57,5 +64,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '800',
     paddingVertical: 10,
+  },
+  overview: {
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    marginBottom: 30,
   },
 });
