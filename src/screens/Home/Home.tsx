@@ -3,6 +3,7 @@ import React from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
 import OverviewCard from '../../components/OverviewCard';
 import {useGetStore} from '../../hooks/store.query';
+import Banner from '../../components/home/Banner';
 
 export default () => {
   const {data} = useGetStore();
@@ -11,9 +12,7 @@ export default () => {
     <HomeLayout title="주소">
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
         <View style={styles.container}>
-          <View style={styles.banner}>
-            <Text>배너</Text>
-          </View>
+          <Banner />
 
           {/* FIXME: flatlist로 수정 */}
           <View style={styles.list}>

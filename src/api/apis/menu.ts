@@ -2,10 +2,10 @@ import api from '..';
 import {IMenu, IUpdateMenu} from '../../@types/menu';
 
 // 메뉴 보기
-export const getMenu = async () => {
-  const res = await api.get(`/menu`);
+export const getMenu = async (storeId: number) => {
+  const res = await api.get(`/menu?storeId=${storeId}`);
 
-  return res;
+  return res?.data?.data;
 };
 
 // 메뉴 생성

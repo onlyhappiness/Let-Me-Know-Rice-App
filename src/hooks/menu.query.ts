@@ -8,9 +8,9 @@ import {
 } from '../api/apis/menu';
 
 // 메뉴 보기
-export const useMenu = () => {
-  return useQuery(['getMenu'], () => {
-    return getMenu();
+export const useMenu = (storeId: number) => {
+  return useQuery(['getMenu', storeId], () => {
+    return getMenu(storeId);
   });
 };
 

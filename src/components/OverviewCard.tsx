@@ -7,12 +7,21 @@ import {
   StyleSheet,
 } from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 const {width} = Dimensions.get('screen');
 
 export default ({item}: any) => {
+  const navigation = useNavigation<any>();
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => {
+        console.log('나와', item?.id);
+        navigation.navigate('Store', {
+          storeId: item?.id,
+        });
+      }}>
       <View style={styles.card}>
         <Image
           source={{

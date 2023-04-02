@@ -19,7 +19,7 @@ export const getStore = async () => {
 export const getStoreDetail = async (storeId: string) => {
   const res = await api.get(`/store/${storeId}`);
 
-  return res;
+  return res?.data?.data;
 };
 
 // 가게 수정
