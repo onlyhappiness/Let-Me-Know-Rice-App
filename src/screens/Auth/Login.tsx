@@ -14,8 +14,12 @@ import {useNavigation} from '@react-navigation/native';
 // logo
 import Logo from '../../assets/logo.svg';
 import {useLoginMutation} from '../../hooks/auth.query';
+import {useDispatch} from 'react-redux';
+import {setPrincipal} from '../../redux/auth';
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const navigation = useNavigation<any>();
 
   // 로그인
@@ -25,12 +29,12 @@ const Login = () => {
   const loginMutation = useLoginMutation();
 
   const onHandleLogin = () => {
-    const body = {
-      signname,
-      password,
-    };
-
-    loginMutation.mutate(body);
+    dispatch(setPrincipal(true));
+    // const body = {
+    //   signname,
+    //   password,
+    // };
+    // loginMutation.mutate(body);
   };
 
   return (

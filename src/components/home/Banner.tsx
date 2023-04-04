@@ -5,7 +5,7 @@ import {useNotice} from '../../hooks/notice.query';
 const {width, height} = Dimensions.get('screen');
 
 export default () => {
-  const {data} = useNotice();
+  // const {data} = useNotice();
 
   return (
     <View>

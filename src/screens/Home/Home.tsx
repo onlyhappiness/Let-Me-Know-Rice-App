@@ -1,12 +1,81 @@
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
 import OverviewCard from '../../components/OverviewCard';
 import {useGetStore} from '../../hooks/store.query';
 import Banner from '../../components/home/Banner';
 
 export default () => {
-  const {data} = useGetStore();
+  // const {data} = useGetStore();
+
+  const [data, setData] = useState([
+    {
+      id: 1,
+      createdAt: '2023-03-04T17:04:30.393Z',
+      updatedAt: '2023-03-31T09:41:05.369Z',
+      name: '치킨집1',
+      address: '치킨 수정 신림점444',
+      phone: '8881111',
+      content: '치치치치킨집입니다.',
+      operationHours: '월~금',
+      closedDays: '',
+    },
+    {
+      id: 5,
+      createdAt: '2023-03-21T12:19:31.397Z',
+      updatedAt: '2023-03-31T09:41:20.861Z',
+      name: '빵집1',
+      address: '타타타로 123',
+      phone: '8881111',
+      content: '빵집입니다.',
+      operationHours: '월,화,수,목,금',
+      closedDays: '',
+    },
+    {
+      id: 6,
+      createdAt: '2023-03-04T17:04:30.393Z',
+      updatedAt: '2023-03-31T09:41:05.371Z',
+      name: '치킨집2',
+      address: '치킨 수정 신림점444',
+      phone: '8881111',
+      content: '치치치치킨집입니다.',
+      operationHours: '월~금',
+      closedDays: '',
+    },
+    {
+      id: 7,
+      createdAt: '2023-03-21T12:19:31.397Z',
+      updatedAt: '2023-03-31T09:41:20.871Z',
+      name: '빵집2',
+      address: '타타타로 123',
+      phone: '8881111',
+      content: '빵집입니다.',
+      operationHours: '월,화,수,목,금',
+      closedDays: '',
+    },
+    {
+      id: 8,
+      createdAt: '2023-03-21T12:19:31.397Z',
+      updatedAt: '2023-03-31T09:41:20.872Z',
+      name: '빵집3',
+      address: '타타타로 123',
+      phone: '8881111',
+      content: '빵집입니다.',
+      operationHours: '월,화,수,목,금',
+      closedDays: '',
+    },
+    {
+      id: 9,
+      createdAt: '2023-03-21T12:19:31.397Z',
+      updatedAt: '2023-03-31T09:41:20.874Z',
+      name: '빵집4',
+      address: '타타타로 123',
+      phone: '8881111',
+      content: '빵집입니다.',
+      operationHours: '월,화,수,목,금',
+      closedDays: '',
+    },
+  ]);
 
   return (
     <HomeLayout title="주소">

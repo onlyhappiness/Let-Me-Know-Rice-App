@@ -9,7 +9,7 @@ import React from 'react';
 
 const {width, height} = Dimensions.get('screen');
 
-export default () => {
+export default ({item}: any) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -17,8 +17,8 @@ export default () => {
           <Text style={styles.image}>이미지</Text>
 
           <View style={styles.textContainer}>
-            <Text>가게이름</Text>
-            <Text>가게주소</Text>
+            <Text style={styles.name}>{item?.Store?.name}</Text>
+            <Text style={styles.address}>{item?.Store?.address}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -28,8 +28,7 @@ export default () => {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#ffffff',
-    backgroundColor: 'gray',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     width: width - 20,
     height: height / 7,
@@ -51,5 +50,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingHorizontal: 10,
     paddingVertical: 20,
+  },
+  name: {
+    fontSize: 14,
+    fontWeight: '800',
+    marginBottom: 8,
+  },
+  address: {
+    fontSize: 14,
+    color: '#808080',
   },
 });
