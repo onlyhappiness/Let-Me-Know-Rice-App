@@ -1,12 +1,40 @@
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import React from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  Dimensions,
+  Image,
+} from 'react-native';
+import React, {useState} from 'react';
 import {useGetStoreDetail} from '../../hooks/store.query';
 import {useMenu} from '../../hooks/menu.query';
+
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+
+import {COLOR} from '../../theme/color';
+
+import StoreAddress from '../../components/home/StoreAddress';
+import StoreInfo from '../../components/home/StoreInfo';
+import StoreMenu from '../../components/home/StoreMenu';
+
+const renderScene = SceneMap({
+  first: StoreAddress,
+  second: StoreInfo,
+  third: StoreMenu,
+});
+
+const {width, height} = Dimensions.get('screen');
 
 export default ({route}) => {
   const {storeId} = route.params;
 
-  console.log('전달된 storeId: ', storeId);
+  const [index, setIndex] = useState(0);
+  const [routes, setRoutes] = useState([
+    {key: 'first', title: '주소'},
+    {key: 'second', title: '편의정보'},
+    {key: 'third', title: '메뉴'},
+  ]);
 
   const {data: storeDetail} = useGetStoreDetail(storeId);
 
@@ -14,13 +42,41 @@ export default ({route}) => {
 
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
-      <View style={styles.container}>
-        <Text>가게 이름: {storeDetail?.name}</Text>
-        <Text>가게 이름: {storeDetail?.content}</Text>
+      <Image style={styles.image} />
 
-        <View style={{marginBottom: 30}} />
+      <View style={styles.centerBox}>
+        <Text style={styles.storeName}>{storeDetail?.name}</Text>
+        <Text style={styles.storeContent}>{storeDetail?.content}</Text>
+      </View>
 
-        <Text>주소</Text>
+      <View style={{marginBottom: 30}} />
+
+      <TabView
+        navigationState={{index, routes}}
+        renderScene={renderScene}
+        onIndexChange={setIndex}
+        initialLayout={{width: width}}
+        style={{
+          borderBottomColor: COLOR.main,
+          flex: 1,
+        }}
+        renderTabBar={props => (
+          <TabBar
+            {...props}
+            // scrollEnabled={}
+            renderLabel={({route, color}) => (
+              <Text style={{color: 'black', margin: 8}}>{route.title}</Text>
+            )}
+            indicatorStyle={{
+              borderBottomWidth: 2,
+              borderBottomColor: COLOR.main,
+            }}
+            style={{backgroundColor: COLOR.background}}
+          />
+        )}
+      />
+
+      {/* <Text>주소</Text>
         <Text>주소 {storeDetail?.address}</Text>
 
         <View style={{marginBottom: 30}} />
@@ -39,8 +95,7 @@ export default ({route}) => {
               <Text>{item?.price}</Text>
             </View>
           );
-        })}
-      </View>
+        })} */}
     </ScrollView>
   );
 };
@@ -48,7 +103,23 @@ export default ({route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  image: {
+    width: '100%',
+    height: height / 3.5,
+    backgroundColor: 'gray',
+    marginBottom: 30,
+  },
+  centerBox: {
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+  storeName: {
+    fontSize: 16,
+    fontWeight: '800',
+    marginBottom: 10,
+  },
+  storeContent: {
+    fontSize: 14,
+    color: '#808080',
   },
 });
