@@ -32,8 +32,8 @@ export default ({route}: any) => {
   const [index, setIndex] = useState(0);
   const [routes, setRoutes] = useState([
     {key: 'first', title: '주소'},
-    {key: 'second', title: '편의정보'},
-    {key: 'third', title: '메뉴'},
+    {key: 'second', title: '메뉴'},
+    {key: 'third', title: '정보'},
   ]);
 
   const {data: storeDetail} = useGetStoreDetail(storeId);
@@ -70,8 +70,8 @@ export default ({route}: any) => {
       </View>
 
       {index === 0 && <StoreAddress storeDetail={storeDetail} />}
-      {index === 1 && <StoreInfo storeDetail={storeDetail} />}
-      {index === 2 && <StoreMenu storeDetail={storeDetail} menu={menu} />}
+      {index === 1 && <StoreMenu storeDetail={storeDetail} menu={menu} />}
+      {index === 2 && <StoreInfo storeDetail={storeDetail} />}
     </ScrollView>
   );
 };

@@ -1,12 +1,30 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import React from 'react';
 
-const StoreAddress = ({storeDetail}: any) => {
+const {height} = Dimensions.get('screen');
+
+export default ({storeDetail}: any) => {
   return (
     <View style={{flex: 1, padding: 15}}>
-      <Text>주소: {storeDetail?.address}</Text>
+      <View style={styles.map}>
+        <Text>카카오 맵</Text>
+      </View>
+      <Text style={styles.address}>{storeDetail?.address}</Text>
     </View>
   );
 };
 
-export default StoreAddress;
+const styles = StyleSheet.create({
+  map: {
+    height: height / 5,
+    backgroundColor: 'gray',
+    borderRadius: 10,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  address: {
+    fontSize: 14,
+  },
+});
