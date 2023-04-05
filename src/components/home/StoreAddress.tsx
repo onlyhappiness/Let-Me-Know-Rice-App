@@ -1,10 +1,10 @@
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
 
-const StoreAddress = () => {
+const StoreAddress = ({storeDetail}: any) => {
   return (
     <View style={{flex: 1, padding: 15}}>
-      <Text>StoreAddress</Text>
+      <Text>주소: {storeDetail?.address}</Text>
     </View>
   );
 };

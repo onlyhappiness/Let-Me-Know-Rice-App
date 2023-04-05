@@ -26,7 +26,7 @@ const renderScene = SceneMap({
 
 const {width, height} = Dimensions.get('screen');
 
-export default ({route}) => {
+export default ({route}: any) => {
   const {storeId} = route.params;
 
   const [index, setIndex] = useState(0);
@@ -49,53 +49,29 @@ export default ({route}) => {
         <Text style={styles.storeContent}>{storeDetail?.content}</Text>
       </View>
 
-      <View style={{marginBottom: 30}} />
+      <View>
+        <TabView
+          navigationState={{index, routes}}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          initialLayout={{width: width}}
+          style={styles.tabView}
+          renderTabBar={props => (
+            <TabBar
+              {...props}
+              renderLabel={({route, color}) => (
+                <Text style={{color: 'black', margin: 8}}>{route.title}</Text>
+              )}
+              indicatorStyle={styles.tabbar}
+              style={{backgroundColor: COLOR.background}}
+            />
+          )}
+        />
+      </View>
 
-      <TabView
-        navigationState={{index, routes}}
-        renderScene={renderScene}
-        onIndexChange={setIndex}
-        initialLayout={{width: width}}
-        style={{
-          borderBottomColor: COLOR.main,
-          flex: 1,
-        }}
-        renderTabBar={props => (
-          <TabBar
-            {...props}
-            // scrollEnabled={}
-            renderLabel={({route, color}) => (
-              <Text style={{color: 'black', margin: 8}}>{route.title}</Text>
-            )}
-            indicatorStyle={{
-              borderBottomWidth: 2,
-              borderBottomColor: COLOR.main,
-            }}
-            style={{backgroundColor: COLOR.background}}
-          />
-        )}
-      />
-
-      {/* <Text>주소</Text>
-        <Text>주소 {storeDetail?.address}</Text>
-
-        <View style={{marginBottom: 30}} />
-
-        <Text>편의정보</Text>
-        <Text>운영일 {storeDetail?.operationHours}</Text>
-        <Text>휴무일 {storeDetail?.closedDays}</Text>
-        <Text>전화번호: {storeDetail?.phone}</Text>
-
-        <View style={{marginBottom: 30}} />
-        <Text>메뉴</Text>
-        {menu?.map((item: any) => {
-          return (
-            <View key={item?.id}>
-              <Text>{item?.name}</Text>
-              <Text>{item?.price}</Text>
-            </View>
-          );
-        })} */}
+      {index === 0 && <StoreAddress storeDetail={storeDetail} />}
+      {index === 1 && <StoreInfo storeDetail={storeDetail} />}
+      {index === 2 && <StoreMenu storeDetail={storeDetail} menu={menu} />}
     </ScrollView>
   );
 };
@@ -112,6 +88,7 @@ const styles = StyleSheet.create({
   },
   centerBox: {
     alignItems: 'center',
+    marginBottom: 30,
   },
   storeName: {
     fontSize: 16,
@@ -121,5 +98,13 @@ const styles = StyleSheet.create({
   storeContent: {
     fontSize: 14,
     color: '#808080',
+  },
+  tabView: {
+    borderBottomColor: COLOR.main,
+    flex: 1,
+  },
+  tabbar: {
+    borderBottomWidth: 2,
+    borderBottomColor: COLOR.main,
   },
 });
