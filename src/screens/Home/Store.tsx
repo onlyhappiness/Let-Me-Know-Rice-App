@@ -47,6 +47,7 @@ export default ({route}: any) => {
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
       <Image style={styles.image} />
+      {/* TODO: 이미지 안에 버튼 추가 */}
       <TouchableOpacity style={styles.left} onPress={() => navigation.goBack()}>
         <Text>나와</Text>
       </TouchableOpacity>

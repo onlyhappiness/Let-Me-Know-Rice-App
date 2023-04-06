@@ -30,7 +30,7 @@ export default () => {
   ];
 
   return (
-    <HomeLayout title="내 밥줘">
+    <HomeLayout title="내 밥">
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
         <View style={styles.container}>
           <View style={styles.profile}>

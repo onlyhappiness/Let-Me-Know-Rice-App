@@ -1,21 +1,20 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-import HomeLayout from '../../layouts/HomeLayout';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export default () => {
+  const {bottom} = useSafeAreaInsets();
+
   return (
-    <HomeLayout title="리뷰">
-      <View style={styles.container}>
-        <Text>Review</Text>
-      </View>
-    </HomeLayout>
+    <View style={[styles.container, {paddingBottom: bottom}]}>
+      <Text>Review</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 15,
   },
 });

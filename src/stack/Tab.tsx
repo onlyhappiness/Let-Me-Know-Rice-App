@@ -7,10 +7,11 @@ import notifee from '@notifee/react-native';
 
 import Home from './Home';
 import Favorite from './Favorite';
-import Review from './Review';
+// import Review from './Review';
 import Setting from './Setting';
 import Community from './Community';
 import {COLOR} from '../theme/color';
+import Search from './Search';
 
 export default () => {
   const Tab = useMemo(() => createBottomTabNavigator(), []);
@@ -33,10 +34,14 @@ export default () => {
           if (route.name === 'FavoriteStack') {
             // iconName = 'heart-outline';
             iconName = 'heart';
-          } else if (route.name === 'ReviewStack') {
-            // iconName = 'chatbubble-ellipses-outline';
-            iconName = 'chatbubble-ellipses';
-          } else if (route.name === 'HomeStack') {
+          } else if (route.name === 'SearchStack') {
+            iconName = 'search';
+          }
+          // else if (route.name === 'ReviewStack') {
+          //   // iconName = 'chatbubble-ellipses-outline';
+          //   iconName = 'chatbubble-ellipses';
+          // }
+          else if (route.name === 'HomeStack') {
             // iconName = 'home-outline';
             iconName = 'home';
           } else if (route.name === 'CommunityStack') {
@@ -60,15 +65,23 @@ export default () => {
         tabBarInactiveTintColor: '#B1BDC5',
       })}>
       <Tab.Screen
+        name="SearchStack"
+        component={Search}
+        options={{title: '검색'}}
+      />
+
+      <Tab.Screen
         name="FavoriteStack"
         component={Favorite}
         options={{title: '찜'}}
       />
-      <Tab.Screen
+      {/* FIXME: */}
+      {/* <Tab.Screen
         name="ReviewStack"
         component={Review}
         options={{title: '리뷰왕'}}
-      />
+      /> */}
+
       <Tab.Screen name="HomeStack" component={Home} options={{title: '홈'}} />
       <Tab.Screen
         name="CommunityStack"
