@@ -17,7 +17,6 @@ export default ({item}: any) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log('나와', item?.id);
         navigation.navigate('Store', {
           storeId: item?.id,
         });

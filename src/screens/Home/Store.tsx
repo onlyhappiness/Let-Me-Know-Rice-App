@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Dimensions,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
 import {useGetStoreDetail} from '../../hooks/store.query';
@@ -17,6 +18,7 @@ import {COLOR} from '../../theme/color';
 import StoreAddress from '../../components/home/StoreAddress';
 import StoreInfo from '../../components/home/StoreInfo';
 import StoreMenu from '../../components/home/StoreMenu';
+import {useNavigation} from '@react-navigation/native';
 
 const renderScene = SceneMap({
   first: StoreAddress,
@@ -27,6 +29,8 @@ const renderScene = SceneMap({
 const {width, height} = Dimensions.get('screen');
 
 export default ({route}: any) => {
+  const navigation = useNavigation();
+
   const {storeId} = route.params;
 
   const [index, setIndex] = useState(0);
@@ -43,6 +47,9 @@ export default ({route}: any) => {
   return (
     <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
       <Image style={styles.image} />
+      <TouchableOpacity style={styles.left} onPress={() => navigation.goBack()}>
+        <Text>나와</Text>
+      </TouchableOpacity>
 
       <View style={styles.centerBox}>
         <Text style={styles.storeName}>{storeDetail?.name}</Text>

@@ -1,15 +1,14 @@
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import React from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const {width} = Dimensions.get('screen');
 
-export default ({storeDetail, menu}: any) => {
+export default ({menu}: any) => {
+  const {bottom} = useSafeAreaInsets();
+
   return (
-    <View
-      style={{
-        flex: 1,
-        padding: 15,
-      }}>
+    <View style={{flex: 1, padding: 15, paddingBottom: bottom}}>
       {menu?.map((item: any) => {
         return (
           <View style={styles.menuCard} key={item?.id}>

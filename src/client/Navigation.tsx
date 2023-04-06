@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -7,6 +7,7 @@ import Tab from '../stack/Tab';
 import quitApp from '../util/quitApp';
 import {useSelector} from 'react-redux';
 import checkUser from '../util/checkUser';
+import Store from '../screens/Home/Store';
 
 export default () => {
   const Stack = useMemo(() => createNativeStackNavigator(), []);
@@ -23,7 +24,10 @@ export default () => {
         {!loginInfo ? (
           <Stack.Screen name="AuthStack" component={Auth} />
         ) : (
-          <Stack.Screen name="TabStack" component={Tab} />
+          <>
+            <Stack.Screen name="TabStack" component={Tab} />
+            <Stack.Screen name="Store" component={Store} />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>

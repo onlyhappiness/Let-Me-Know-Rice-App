@@ -1,55 +1,81 @@
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   Dimensions,
+  StyleSheet,
 } from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
-const {width, height} = Dimensions.get('screen');
+const {width} = Dimensions.get('screen');
 
-export default () => {
+export default ({item}: any) => {
+  const navigation = useNavigation<any>();
+
   return (
-    <View style={styles.container}>
-      <TouchableOpacity>
-        <View style={styles.card}>
-          <Text style={styles.image}>이미지</Text>
-
-          <View style={styles.textContainer}>
-            <Text>가게이름</Text>
-            <Text>가게주소</Text>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('Store', {
+          storeId: item?.id,
+        });
+      }}
+      style={styles.container}>
+      <View style={styles.card}>
+        <View style={styles.image}>
+          <View style={styles.circle}>
+            <Text>이미지</Text>
           </View>
         </View>
-      </TouchableOpacity>
-    </View>
+
+        <View style={styles.textContainer}>
+          <Text style={styles.name}>{item?.Store?.name}</Text>
+          <Text style={styles.address}>{item?.Store?.address}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#ffffff',
-    backgroundColor: 'gray',
-    borderRadius: 10,
+    backgroundColor: '#ffffff',
     width: width - 20,
-    height: height / 7,
-    marginTop: 20,
+    height: 130,
+    borderRadius: 20,
   },
   card: {
     width: '100%',
-    flexDirection: 'row',
     borderRadius: 10,
+    flexDirection: 'row',
   },
   image: {
-    width: '30%',
+    width: width / 3,
+    height: 130,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    // backgroundColor: 'yellow',
+  },
+  circle: {
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign: 'center',
+    width: 100,
+    height: '70%',
+    backgroundColor: 'gray',
+    borderRadius: 50,
   },
   textContainer: {
-    width: '70%',
-    justifyContent: 'space-around',
-    paddingHorizontal: 10,
-    paddingVertical: 20,
+    padding: 20,
+    borderRadius: 10,
+    flex: 1,
+    height: 130,
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: '800',
+    paddingBottom: 10,
+  },
+  address: {
+    color: '#808080',
   },
 });

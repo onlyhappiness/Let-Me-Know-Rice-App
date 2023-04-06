@@ -1,11 +1,14 @@
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import React from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const {height} = Dimensions.get('screen');
 
 export default ({storeDetail}: any) => {
+  const {bottom} = useSafeAreaInsets();
+
   return (
-    <View style={{flex: 1, padding: 15}}>
+    <View style={{flex: 1, padding: 15, paddingBottom: bottom}}>
       <View style={styles.map}>
         <Text>카카오 맵</Text>
       </View>

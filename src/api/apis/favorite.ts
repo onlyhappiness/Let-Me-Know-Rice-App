@@ -5,7 +5,7 @@ import {IFavorite} from '../../@types/favorite';
 export const getFavorite = async () => {
   const res = await api.get(`/favorite`);
 
-  return res;
+  return res?.data?.data;
 };
 
 // 찜하기
