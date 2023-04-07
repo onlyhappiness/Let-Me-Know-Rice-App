@@ -8,6 +8,7 @@ import quitApp from '../util/quitApp';
 import {useSelector} from 'react-redux';
 import checkUser from '../util/checkUser';
 import Store from '../screens/Home/Store';
+import ReviewDetail from '../screens/Review/ReviewDetail';
 
 export default () => {
   const Stack = useMemo(() => createNativeStackNavigator(), []);
@@ -27,6 +28,7 @@ export default () => {
           <>
             <Stack.Screen name="TabStack" component={Tab} />
             <Stack.Screen name="Store" component={Store} />
+            {/* <Stack.Screen name="ReviewDetail" component={ReviewDetail} /> */}
           </>
         )}
       </Stack.Navigator>
