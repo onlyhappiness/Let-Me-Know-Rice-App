@@ -1,18 +1,27 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
+import DefaultLayout from '../../layouts/DefaultLayout';
 
-const ReviewDetail = ({route}: any) => {
+export default ({route}: any) => {
   console.log('route', route);
 
-  const {reviewId} = route.param;
+  const {reviewId} = route.params;
 
   console.log(reviewId);
 
   return (
-    <View>
-      <Text>ReviewDetail</Text>
-    </View>
+    <DefaultLayout title="리뷰 상세">
+      <View style={styles.container}>
+        <Text>ReviewDetail</Text>
+      </View>
+    </DefaultLayout>
   );
 };
 
-export default ReviewDetail;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

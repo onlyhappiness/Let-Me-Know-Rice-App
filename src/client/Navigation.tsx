@@ -28,7 +28,7 @@ export default () => {
           <>
             <Stack.Screen name="TabStack" component={Tab} />
             <Stack.Screen name="Store" component={Store} />
-            {/* <Stack.Screen name="ReviewDetail" component={ReviewDetail} /> */}
+            <Stack.Screen name="ReviewDetail" component={ReviewDetail} />
           </>
         )}
       </Stack.Navigator>

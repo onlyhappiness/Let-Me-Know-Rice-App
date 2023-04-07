@@ -48,8 +48,8 @@ export default () => {
         </View>
 
         {index === 0 && <Review />}
-        {/* {index === 1 && <Review />} */}
-        {/* {index === 2 && <Review />} */}
+        {index === 1 && <Review />}
+        {index === 2 && <Review />}
       </View>
       {/* </ScrollView> */}
     </HomeLayout>

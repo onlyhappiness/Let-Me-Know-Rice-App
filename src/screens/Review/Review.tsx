@@ -1,16 +1,44 @@
-import {View, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useGetAllReview} from '../../hooks/review.query';
 import ReviewCard from '../../components/review/ReviewCard';
 import {useNavigation} from '@react-navigation/native';
 
+import Logo from '../../assets/logo.svg';
+
+const {width, height} = Dimensions.get('screen');
+
 export default () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const {bottom} = useSafeAreaInsets();
 
   const {data} = useGetAllReview();
+
+  const renderItem = ({item}: any) => {
+    return (
+      <TouchableOpacity
+        key={item?.id}
+        style={styles.cardContainer}
+        onPress={() => {
+          console.log('skdhk');
+          navigation.navigate('ReviewDetail', {
+            reviewId: item?.id,
+          });
+        }}>
+        <View style={styles.card}>
+          <Logo width={120} height={120} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
   // console.log('리뷰 데이터: ', data);
 
@@ -20,7 +48,7 @@ export default () => {
         data={data}
         numColumns={3}
         keyExtractor={item => item.id}
-        renderItem={ReviewCard}
+        renderItem={renderItem}
       />
     </View>
   );
@@ -29,5 +57,19 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+
+  cardContainer: {
+    width: width / 3,
+    height: height / 6 - 10,
+    padding: 2,
+  },
+  card: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'white',
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
