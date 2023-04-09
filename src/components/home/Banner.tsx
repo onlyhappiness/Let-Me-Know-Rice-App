@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Dimensions, FlatList} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useNotice} from '../../hooks/notice.query';
 
@@ -7,43 +7,41 @@ const {width, height} = Dimensions.get('screen');
 export default () => {
   const {data} = useNotice();
 
+  console.log('notice 데이터:', data);
+
   return (
-    <View>
-      <Text>나와</Text>
-    </View>
+    <FlatList
+      style={styles.container}
+      data={data}
+      horizontal
+      pagingEnabled
+      // onScroll={item => {
+      //   console.log('------------------------');
+      //   console.log('스크롤 item 나와::', item);
+      // }}
+      showsHorizontalScrollIndicator
+      keyExtractor={item => item.id}
+      renderItem={(item: any) => {
+        return (
+          <View style={styles.banner}>
+            <Text>배너</Text>
+          </View>
+        );
+      }}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  banner: {
+  container: {
     width: '100%',
-    height: height / 4.5,
-    alignItems: 'center',
-    // padding: 30,
+    height: 100,
+    backgroundColor: 'gray',
     marginBottom: 30,
   },
-
-  slide1: {
-    flex: 1,
+  banner: {
+    width: width,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#9DD6EB',
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  },
-  text: {
-    color: 'black',
-    fontSize: 30,
-    fontWeight: 'bold',
   },
 });

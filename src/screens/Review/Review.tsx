@@ -8,7 +8,6 @@ import {
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useGetAllReview} from '../../hooks/review.query';
-import ReviewCard from '../../components/review/ReviewCard';
 import {useNavigation} from '@react-navigation/native';
 
 import Logo from '../../assets/logo.svg';
@@ -22,13 +21,13 @@ export default () => {
 
   const {data} = useGetAllReview();
 
+  // RenderItem
   const renderItem = ({item}: any) => {
     return (
       <TouchableOpacity
         key={item?.id}
         style={styles.cardContainer}
         onPress={() => {
-          console.log('skdhk');
           navigation.navigate('ReviewDetail', {
             reviewId: item?.id,
           });
@@ -39,8 +38,6 @@ export default () => {
       </TouchableOpacity>
     );
   };
-
-  // console.log('리뷰 데이터: ', data);
 
   return (
     <View style={[styles.container, {paddingBottom: bottom}]}>
@@ -62,7 +59,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     width: width / 3,
     height: height / 6 - 10,
-    padding: 2,
+    padding: 3,
   },
   card: {
     width: '100%',
