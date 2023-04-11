@@ -25,33 +25,35 @@ export default () => {
 
   return (
     <HomeLayout title="커뮤니티">
-      {/* <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}> */}
-      <View style={styles.container}>
-        <View style={styles.tabContainer}>
-          <TabView
-            navigationState={{index, routes}}
-            renderScene={renderScene}
-            onIndexChange={setIndex}
-            initialLayout={{width: width}}
-            style={styles.tabView}
-            renderTabBar={props => (
-              <TabBar
-                {...props}
-                renderLabel={({route, color}) => (
-                  <Text style={{color: 'black', margin: 8}}>{route.title}</Text>
-                )}
-                indicatorStyle={styles.tabbar}
-                style={{backgroundColor: COLOR.background}}
-              />
-            )}
-          />
-        </View>
+      <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
+        <View style={styles.container}>
+          <View style={styles.tabContainer}>
+            <TabView
+              navigationState={{index, routes}}
+              renderScene={renderScene}
+              onIndexChange={setIndex}
+              initialLayout={{width: width}}
+              style={styles.tabView}
+              renderTabBar={props => (
+                <TabBar
+                  {...props}
+                  renderLabel={({route, color}) => (
+                    <Text style={{color: 'black', margin: 8}}>
+                      {route.title}
+                    </Text>
+                  )}
+                  indicatorStyle={styles.tabbar}
+                  style={{backgroundColor: COLOR.background}}
+                />
+              )}
+            />
+          </View>
 
-        {index === 0 && <Review />}
-        {index === 1 && <Review />}
-        {index === 2 && <Review />}
-      </View>
-      {/* </ScrollView> */}
+          {index === 0 && <Review />}
+          {index === 1 && <Review />}
+          {index === 2 && <Review />}
+        </View>
+      </ScrollView>
     </HomeLayout>
   );
 };

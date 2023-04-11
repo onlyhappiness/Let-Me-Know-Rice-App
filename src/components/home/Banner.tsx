@@ -7,8 +7,6 @@ const {width, height} = Dimensions.get('screen');
 export default () => {
   const {data} = useNotice();
 
-  console.log('notice 데이터:', data);
-
   return (
     <FlatList
       style={styles.container}
