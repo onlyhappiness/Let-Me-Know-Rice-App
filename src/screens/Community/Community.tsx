@@ -5,13 +5,15 @@ import HomeLayout from '../../layouts/HomeLayout';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {COLOR} from '../../theme/color';
 import Review from '../Review/Review';
+import TodayMenu from '../Review/TodayMenu';
+import Recruitment from '../Review/Recruitment';
 
 const {width} = Dimensions.get('screen');
 
 const renderScene = SceneMap({
   first: Review,
-  second: Review,
-  third: Review,
+  second: TodayMenu,
+  third: Recruitment,
 });
 
 export default () => {
@@ -50,8 +52,8 @@ export default () => {
           </View>
 
           {index === 0 && <Review />}
-          {index === 1 && <Review />}
-          {index === 2 && <Review />}
+          {index === 1 && <TodayMenu />}
+          {index === 2 && <Recruitment />}
         </View>
       </ScrollView>
     </HomeLayout>

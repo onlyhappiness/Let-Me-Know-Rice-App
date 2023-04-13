@@ -4,9 +4,12 @@ import {
   TouchableOpacity,
   Dimensions,
   StyleSheet,
+  Image,
 } from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+
+import Logo from '../assets/logo.svg';
 
 const {width} = Dimensions.get('screen');
 
@@ -23,9 +26,16 @@ export default ({item}: any) => {
       style={styles.container}>
       <View style={styles.card}>
         <View style={styles.image}>
-          <View style={styles.circle}>
-            <Text>이미지</Text>
-          </View>
+          {item?.Store?.image ? (
+            <Image
+              source={{uri: `${item?.Store?.image}`}}
+              style={{width: 100, height: 100, borderRadius: 50}}
+            />
+          ) : (
+            <View style={styles.circle}>
+              <Logo width={100} />
+            </View>
+          )}
         </View>
 
         <View style={styles.textContainer}>
@@ -60,8 +70,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 100,
-    height: '70%',
-    backgroundColor: 'gray',
+    height: '80%',
+    backgroundColor: '#d6d6d6',
     borderRadius: 50,
   },
   textContainer: {

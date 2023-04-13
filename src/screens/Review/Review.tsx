@@ -4,6 +4,7 @@ import {
   FlatList,
   TouchableOpacity,
   Dimensions,
+  Image,
 } from 'react-native';
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -33,7 +34,16 @@ export default () => {
           });
         }}>
         <View style={styles.card}>
-          <Logo width={120} height={120} />
+          {item?.image ? (
+            <Image
+              source={{
+                uri: `${item?.image}`,
+              }}
+              style={styles.image}
+            />
+          ) : (
+            <Logo width={120} height={120} />
+          )}
         </View>
       </TouchableOpacity>
     );
@@ -69,5 +79,10 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    width: 120,
+    height: 120,
+    borderRadius: 15,
   },
 });

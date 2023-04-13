@@ -1,8 +1,10 @@
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const {width} = Dimensions.get('screen');
+
+import Logo from '../../assets/logo.svg';
 
 export default ({menu}: any) => {
   const {bottom} = useSafeAreaInsets();
@@ -10,14 +12,19 @@ export default ({menu}: any) => {
   return (
     <View style={{flex: 1, padding: 15, paddingBottom: bottom}}>
       {menu?.map((item: any) => {
+        console.log('item: ', item);
         return (
           <View style={styles.menuCard} key={item?.id}>
             <View style={styles.textContainer}>
               <Text style={styles.name}>{item?.name}</Text>
               <Text>{Number(item?.price)?.toLocaleString('ko-KR')}원</Text>
             </View>
-            <View style={styles.image}>
-              <Text>이미지</Text>
+            <View style={styles.imageContainer}>
+              {item?.image ? (
+                <Image source={{uri: `${item?.image}`}} style={styles.image} />
+              ) : (
+                <Logo width={width / 2 - 30} />
+              )}
             </View>
           </View>
         );
@@ -52,10 +59,18 @@ const styles = StyleSheet.create({
   },
   price: {},
 
-  image: {
-    backgroundColor: 'gray',
+  imageContainer: {
+    borderColor: '#d6d6d6',
+    borderWidth: 0.5,
+    borderRadius: 10,
     width: width / 2 - 30,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    width: width / 2 - 30,
+    height: 110,
+    borderRadius: 10,
+    resizeMode: 'center',
   },
 });

@@ -9,6 +9,8 @@ import {
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
+import Logo from '../assets/logo.svg';
+
 const {width} = Dimensions.get('screen');
 
 export default ({item}: any) => {
@@ -22,12 +24,16 @@ export default ({item}: any) => {
         });
       }}>
       <View style={styles.card}>
-        <Image
-          source={{
-            uri: `https://www.pinterest.co.kr/pin/594123375864915576`,
-          }}
-          style={styles.image}
-        />
+        {item?.image ? (
+          <Image
+            source={{
+              uri: `${item?.image}`,
+            }}
+            style={styles.image}
+          />
+        ) : (
+          <Logo width={width - 20} height={140} />
+        )}
         <Text style={styles.text}>{item?.name}</Text>
         <Text style={styles.subText}>{item?.address}</Text>
       </View>
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     width: width - 20,
-    height: 130,
+    height: 140,
     backgroundColor: 'gray',
   },
   text: {
@@ -59,6 +65,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   subText: {
+    resizeMode: 'center',
     paddingHorizontal: 10,
     paddingBottom: 20,
     fontSize: 14,
