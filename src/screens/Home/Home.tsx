@@ -1,4 +1,10 @@
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import React from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
 import OverviewCard from '../../components/OverviewCard';
@@ -17,8 +23,13 @@ export default () => {
           {/* FIXME: flatlist로 수정 */}
           <View style={styles.list}>
             <View style={styles.pick}>
-              <Text style={styles.pickText}>픽 맛집</Text>
-              <Text>전체보기</Text>
+              <Text style={styles.pickText}>유저들의 PICK 맛집</Text>
+              <TouchableOpacity
+                onPress={() => {
+                  console.log('가게 페이지로 이동');
+                }}>
+                <Text>전체보기</Text>
+              </TouchableOpacity>
             </View>
 
             {data?.map((item: any) => {

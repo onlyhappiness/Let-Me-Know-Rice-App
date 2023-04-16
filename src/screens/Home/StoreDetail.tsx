@@ -68,8 +68,16 @@ export default ({route}: any) => {
       </ImageBackground>
 
       <View style={styles.centerBox}>
-        <Text style={styles.storeName}>{storeDetail?.name}</Text>
-        <Text style={styles.storeContent}>{storeDetail?.content}</Text>
+        <View style={{flex: 1}} />
+        <View style={{flex: 1, width: '100%', alignItems: 'center'}}>
+          <Text style={styles.storeName}>{storeDetail?.name}</Text>
+          <Text style={styles.storeContent}>{storeDetail?.content}</Text>
+        </View>
+        <View style={{flex: 1}}>
+          <View style={{alignItems: 'flex-end', paddingRight: 20}}>
+            <FeatherIcon name="heart" size={24} color={'gray'} />
+          </View>
+        </View>
       </View>
 
       <View>
@@ -124,9 +132,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   centerBox: {
-    alignItems: 'center',
     marginBottom: 30,
+    // flex: 1,
+    flexDirection: 'row',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    width: '100%',
   },
+
   storeName: {
     fontSize: 16,
     fontWeight: '800',

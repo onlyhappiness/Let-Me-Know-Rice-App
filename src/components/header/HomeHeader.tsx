@@ -2,12 +2,15 @@ import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
 
 interface Prop {
   title: string | undefined;
 }
 
 export default ({title}: Prop) => {
+  const navigation = useNavigation<any>();
+
   return (
     <View style={styles.header}>
       <View style={styles.left}>
@@ -21,7 +24,13 @@ export default ({title}: Prop) => {
           {/* <Text>검색아이콘</Text> */}
           <FeatherIcon name="search" size={22} />
           {/* <Text>종 아이콘</Text> */}
-          <FeatherIcon name="send" size={22} />
+          <FeatherIcon
+            name="bell"
+            size={22}
+            onPress={() => {
+              navigation.navigate('Post');
+            }}
+          />
         </View>
       </View>
     </View>

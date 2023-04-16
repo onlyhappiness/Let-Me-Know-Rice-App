@@ -19,7 +19,7 @@ export default ({item}: any) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('Store', {
+        navigation.navigate('StoreDetail', {
           storeId: item?.id,
         });
       }}>
