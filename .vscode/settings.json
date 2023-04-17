@@ -1,0 +1,6 @@
+{
+  "workbench.colorCustomizations": {
+    // 상단 타이틀 배경색
+    "titleBar.activeBackground": "#ff7700"
+  }
+}

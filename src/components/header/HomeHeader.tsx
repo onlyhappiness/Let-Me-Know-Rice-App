@@ -1,8 +1,9 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
+import {COLOR} from '../../theme/color';
 
 interface Prop {
   title: string | undefined;
@@ -21,16 +22,14 @@ export default ({title}: Prop) => {
 
       <View style={styles.right}>
         <View style={styles.iconContainer}>
-          {/* <Text>검색아이콘</Text> */}
           <FeatherIcon name="search" size={22} />
-          {/* <Text>종 아이콘</Text> */}
-          <FeatherIcon
-            name="bell"
-            size={22}
+          <TouchableOpacity
             onPress={() => {
               navigation.navigate('Post');
-            }}
-          />
+            }}>
+            <FeatherIcon name="bell" size={22} />
+            <View style={styles.isNotice} />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -68,5 +67,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  isNotice: {
+    width: 11,
+    height: 10,
+    borderRadius: 100,
+    backgroundColor: COLOR.main,
+    position: 'absolute',
+    top: 0,
+    right: 0,
   },
 });

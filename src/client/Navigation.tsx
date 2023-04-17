@@ -10,6 +10,7 @@ import checkUser from '../util/checkUser';
 import ReviewDetail from '../screens/Review/ReviewDetail';
 import StoreDetail from '../screens/Home/StoreDetail';
 import Post from '../screens/Home/Post';
+import Store from '../screens/Home/Store';
 
 export default () => {
   const Stack = useMemo(() => createNativeStackNavigator(), []);
@@ -29,6 +30,7 @@ export default () => {
           <>
             <Stack.Screen name="TabStack" component={Tab} />
             <Stack.Screen name="Post" component={Post} />
+            <Stack.Screen name="Store" component={Store} />
             <Stack.Screen name="StoreDetail" component={StoreDetail} />
             <Stack.Screen name="ReviewDetail" component={ReviewDetail} />
           </>

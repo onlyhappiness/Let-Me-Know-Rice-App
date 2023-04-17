@@ -4,33 +4,40 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import HomeLayout from '../../layouts/HomeLayout';
 import OverviewCard from '../../components/OverviewCard';
 import {useGetStore} from '../../hooks/store.query';
 import Banner from '../../components/home/Banner';
+import {useNavigation} from '@react-navigation/native';
+import {COLOR} from '../../theme/color';
 
 export default () => {
-  const {data} = useGetStore();
+  const navigation = useNavigation<any>();
+
+  const {data, isLoading} = useGetStore();
 
   return (
     <HomeLayout title="주소">
       <ScrollView contentContainerStyle={{flexGrow: 1}} style={{flex: 1}}>
+        {isLoading && <ActivityIndicator color={COLOR.main} />}
         <View style={styles.container}>
           <Banner />
 
           {/* FIXME: flatlist로 수정 */}
           <View style={styles.list}>
-            <View style={styles.pick}>
+            {/* <View style={styles.pick}>
               <Text style={styles.pickText}>유저들의 PICK 맛집</Text>
               <TouchableOpacity
                 onPress={() => {
                   console.log('가게 페이지로 이동');
+                  navigation.navigate('Store');
                 }}>
                 <Text>전체보기</Text>
               </TouchableOpacity>
-            </View>
+            </View> */}
 
             {data?.map((item: any) => {
               return (
