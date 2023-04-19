@@ -1,25 +1,3 @@
-// import {View, Text, StyleSheet} from 'react-native';
-// import React from 'react';
-// import HomeLayout from '../../layouts/HomeLayout';
-
-// export default () => {
-//   return (
-//     <HomeLayout title="검색">
-//       <View style={styles.container}>
-//         <Text>Search</Text>
-//       </View>
-//     </HomeLayout>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//   },
-// });
-
 import NaverMapView, {
   Circle,
   Marker,
@@ -42,36 +20,46 @@ export default () => {
       onCameraChange={e => console.warn('onCameraChange', JSON.stringify(e))}
       onMapClick={e => console.warn('onMapClick', JSON.stringify(e))}>
       <Marker coordinate={P0} onClick={() => console.warn('onClick! p0')} />
-      <Marker
+
+      {/* <Marker
         coordinate={P1}
         pinColor="blue"
         onClick={() => console.warn('onClick! p1')}
-      />
-      <Marker
+      /> */}
+
+      {/* TODO: pinColor="red" 는 ios에서 yellow로 나옴 */}
+      {/* <Marker
         coordinate={P2}
         pinColor="red"
         onClick={() => console.warn('onClick! p2')}
-      />
-      <Path
+      /> */}
+
+      {/* TODO: P0, P1 거리 */}
+      {/* <Path
         coordinates={[P0, P1]}
         onClick={() => console.warn('onClick! path')}
         width={10}
-      />
-      <Polyline
+      /> */}
+
+      {/* TODO: P1, P2 간의 선 */}
+      {/* <Polyline
         coordinates={[P1, P2]}
         onClick={() => console.warn('onClick! polyline')}
-      />
+      /> */}
+
       <Circle
         coordinate={P0}
         color={'rgba(255,0,0,0.3)'}
         radius={200}
         onClick={() => console.warn('onClick! circle')}
       />
-      <Polygon
+
+      {/* TOOD: P0, P1, P2 사이 삼각형 생성 */}
+      {/* <Polygon
         coordinates={[P0, P1, P2]}
         color={`rgba(0, 0, 0, 0.5)`}
         onClick={() => console.warn('onClick! polygon')}
-      />
+      /> */}
     </NaverMapView>
   );
 };

@@ -5,6 +5,9 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 
 import notifee from '@notifee/react-native';
 
+import Geolocation from 'react-native-geolocation-service';
+import {Platform} from 'react-native';
+
 import Home from './Home';
 import Favorite from './Favorite';
 // import Review from './Review';
@@ -22,6 +25,23 @@ export default () => {
       await notifee.requestPermission();
     })();
   }, []);
+
+  useEffect(() => {
+    if (Platform.OS === 'ios') {
+      Geolocation.requestAuthorization('whenInUse');
+    }
+  }, []);
+
+  Geolocation.getCurrentPosition(
+    position => {
+      console.log('내 위치 나와!!!!! ::', position);
+    },
+    error => {
+      // See error code charts below.
+      console.log(error.code, error.message);
+    },
+    {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
+  );
 
   return (
     <Tab.Navigator
