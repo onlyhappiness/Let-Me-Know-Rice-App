@@ -34,7 +34,7 @@ export default () => {
 
   Geolocation.getCurrentPosition(
     position => {
-      console.log('내 위치 나와!!!!! ::', position);
+      console.log('내 위치:', position);
     },
     error => {
       // See error code charts below.
