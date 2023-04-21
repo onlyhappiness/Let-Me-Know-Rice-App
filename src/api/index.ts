@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 export const getApiHost = () => {
+  // TODO: For Android
+  // if (__DEV__) return `http://10.0.2.2:3105`;
+
   if (__DEV__) return `http://localhost:4000`;
 };
 
