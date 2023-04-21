@@ -14,6 +14,9 @@ export const useRegisterMutation = () => {
     },
     onError(err) {
       console.log('회원가입 에러', err);
+      // errorcode
+      const {data}: any = (err as AxiosError<any>).response;
+      console.log('error: ', data);
     },
   });
 };
